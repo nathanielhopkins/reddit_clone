@@ -1,0 +1,27 @@
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# secrets
+config/initializers/secret_token.rb
+config/master.key
+
+## Environment normalization:
+/.bundle
+/vendor/bundle
+
+# random logs
+.rvmrc
+.byebug_history
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+/public/uploads
