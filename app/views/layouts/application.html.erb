@@ -10,6 +10,29 @@
   </head>
 
   <body>
+    <header class="main-header">
+      <% if current_user %>
+      <ul class="main-header-user">
+        <li><%= current_user.username %></li>
+        <li><%= render "shared/logout_button" %></li>
+      </ul>
+      <% else %>
+      <a class="main-header-signin" 
+        data-turbolinks="false",
+        href="<%= new_session_url %>">Sign in!</a>
+      <% end %>
+    </header>
+
+    <section class="notices/errors">
+      <ul>
+        <% if flash[:notices] %>
+          <li><%= flash[:notices] %></li>
+        <% end %>
+        <% if flash[:errors] %>
+          <li><%= flash[:errors] %></li>
+        <% end %>
+      </ul>
+    </section>
     <%= yield %>
   </body>
 </html>
