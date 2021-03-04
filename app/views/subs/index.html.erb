@@ -1,0 +1,11 @@
+<h1 class="page-header">All the Subs!</h1>
+
+<ul class="subs-list">
+  <% @subs.each do |sub| %>
+    <li>
+      <a data-turbolinks="false"
+        href="<%= sub_url(sub) %>"
+        ><%= sub.title %></a>
+    </li>
+  <% end %>
+</ul>
