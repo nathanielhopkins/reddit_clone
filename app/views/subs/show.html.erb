@@ -1,0 +1,10 @@
+<h1><%= @sub.title %></h1>
+
+<b>Description</b>
+<p><%= @sub.description %></p>
+
+<% if @sub.moderator_id == current_user.id %>
+  <a data-turbolinks="false" 
+    href="<%= edit_sub_url(@sub) %>"
+    >Edit this Sub</a>
+<% end %>
