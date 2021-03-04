@@ -14,6 +14,7 @@ class SubsController < ApplicationController
     else
       flash.now[:errors] = @sub.errors.full_messages
       render :new
+    end
   end
 
   def index
