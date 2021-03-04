@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     else
       login_user!(user)
       flash[:notices] = "Successfully logged in as #{user.username}!"
-      #redirect_to ???
+      redirect_to root_path
     end
   end
 

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:notices] = "User #{@user.username} saved successfully!"
 			login_user!(@user)
-			# redirect_to root_path
+			redirect_to root_path
 		else
 			flash.now[:errors] = @user.errors.full_messages
 			render :new
