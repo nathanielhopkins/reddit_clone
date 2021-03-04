@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
 		if @user.save
 			flash[:notices] = "User #{@user.username} saved successfully!"
+			login_user!(@user)
+			# redirect_to root_path
 		else
 			flash.now[:errors] = @user.errors.full_messages
 			render :new
@@ -17,6 +19,6 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:user, :password)
+		params.require(:user).permit(:username, :password)
 	end
 end
