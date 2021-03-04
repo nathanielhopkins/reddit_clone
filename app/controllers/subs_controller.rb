@@ -31,7 +31,11 @@ class SubsController < ApplicationController
 
   def edit
     @sub = Sub.find_by(id: params[:id])
-    render :edit
+    if @sub.moderator_id == current_user.id
+      render :edit
+    else
+      redirect_to sub_url(@sub)
+    end
   end
 
   def update
