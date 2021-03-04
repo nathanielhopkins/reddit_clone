@@ -1,4 +1,6 @@
 class SubsController < ApplicationController
+  before_action :require_login!
+
   def new
     @sub = Sub.new
     render :new
