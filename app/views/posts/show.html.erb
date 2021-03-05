@@ -2,9 +2,15 @@
 
 <% if @post.content %>
   <b>Content:</b>
-  <p><%= @post.content %></p>
+  <pre><%= @post.content %></pre>
 <% end %>
 
+<b>Subs</b>
+<ul class="posts-subs-list">
+  <% @post.subs.each do |sub| %>
+    <li><a data-turbolinks="false" href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
+  <% end %>
+</ul>
 
 <% if @post.author_id == current_user.id %>
   <a data-turbolinks="false" href="<%= edit_post_url(@post) %>">Edit this post!</a>
