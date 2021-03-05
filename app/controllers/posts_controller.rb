@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.author_id == current_user.id
+    @post.author_id = current_user.id
     
     if @post.save
       flash[:notices] = "#{@post.title} posted successfully."
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids:[])
   end
 
   def require_author!
