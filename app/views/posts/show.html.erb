@@ -1,0 +1,11 @@
+<h1 class="page-header"><%= @post.title %> by <%= @post.author %></h1>
+
+<% if @post.content %>
+  <b>Content:</b>
+  <p><%= @post.content %></p>
+<% end %>
+
+
+<% if @post.author_id == current_user.id %>
+  <a data-turbolinks="false" href="<%= edit_post(@post) %>">Edit this post!</a>
+<% end %>
