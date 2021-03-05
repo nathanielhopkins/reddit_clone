@@ -3,6 +3,14 @@
 <b>Description</b>
 <p><%= @sub.description %></p>
 
+<a data-turbolinks="false" href="<%= new_post_url %>">Make New Post!</a>
+
+<ul class="posts">
+  <% @sub.posts.each do |post| %>
+    <li><a data-turbolinks="false" href="<%= post_url(post) %>"><%= post.title %></a></li>
+  <% end %>
+</ul>
+
 <% if @sub.moderator_id == current_user.id %>
   <a data-turbolinks="false" 
     href="<%= edit_sub_url(@sub) %>"
