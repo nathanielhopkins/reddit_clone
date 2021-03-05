@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_203115) do
+ActiveRecord::Schema.define(version: 2021_03_05_204850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_203115) do
     t.string "title", null: false
     t.string "url"
     t.text "content"
-    t.integer "sub_id", null: false
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sub_id", "title"], name: "index_posts_on_sub_id_and_title", unique: true
-    t.index ["sub_id"], name: "index_posts_on_sub_id"
     t.index ["title"], name: "index_posts_on_title"
   end
 
