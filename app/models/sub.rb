@@ -8,7 +8,7 @@ class Sub < ApplicationRecord
     foreign_key: :moderator_id,
     primary_key: :id
     ) 
-  has_many :post_subs
+  has_many :post_subs, inverse_of: :sub
   has_many :posts, through: :post_subs
     
 end
