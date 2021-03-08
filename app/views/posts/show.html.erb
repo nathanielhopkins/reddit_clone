@@ -18,6 +18,12 @@
   <% @post.comments.where(parent_comment_id: nil).each do |comment| %>
     <br>
     <li><a data-turbolinks="false" href="<%= comment_url(comment) %>"><%= comment.content %></a></li>
+      <ul>
+        <% comment.child_comments.each do |child| %>
+          <br>
+          <li><a data-turbolinks="false" href="<%= comment_url(child) %>"><%= child.content %></a></li>
+        <% end %>
+      </ul>
   <% end %>
 </ul>
 
