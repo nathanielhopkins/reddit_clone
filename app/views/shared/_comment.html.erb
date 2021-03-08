@@ -1,0 +1,7 @@
+<a data-turbolinks="false" href="<%= comment_url(comment)%>"><%= comment.content %></a>
+  <ul>
+    <% comment.child_comments.each do |child| %>
+      <br>
+      <li><%= render "shared/comment", comment: child %></li>
+      <% end %>
+  </ul>
