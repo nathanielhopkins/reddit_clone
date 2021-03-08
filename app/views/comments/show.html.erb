@@ -1,0 +1,16 @@
+<b>Original Comment:</b>
+<br>
+<pre><%= @comment.content %></pre>
+<br>
+<b>Reply to this comment:</b>
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+
+  <label for="content">Body</label>
+  <br>
+  <textarea id="content" name="comment[content]"></textarea>
+  <br>
+  <input type="submit">
+</form>
