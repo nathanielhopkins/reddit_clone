@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  def show
+    @comment = Comment.find_by(id: params[:id])
+    render :show  
+  end
+
   def new
     @comment = Comment.new
     render :new
@@ -6,8 +11,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.author_id = current_user.id
-    @comment.post_id = params[:post_id]    
+    @comment.author_id = current_user.id  
 
     if @comment.save
       flash[:notices] = "Comment saved successfully!"
@@ -20,6 +24,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :post_id)
   end
 end
