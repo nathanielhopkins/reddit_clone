@@ -1,0 +1,12 @@
+<h1 class="page-header">New Comment!</h1>
+
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= params[:post_id]%>">
+  
+  <label for="content">Body</label>
+  <br>
+  <textarea id="content" name="comment[content]"><%= @comment.content %></textarea>
+  <br>
+  <input type="submit">
+</form>
