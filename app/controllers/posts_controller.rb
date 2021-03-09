@@ -41,6 +41,24 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+
+  def upvote
+    @vote = Vote.find_or_create_by(votable_type: "Post", votable_id: params[:id])
+    if @vote.value.nil? || @vote.value == -1
+      @vote.value = 1
+      @vote.save
+    end
+    redirect_to post_url(params[:id])
+  end
+
+  def downvote
+    @vote = Vote.find_or_create_by(votable_type: "Post", votable_id: params[:id])
+    if @vote.value.nil? || @vote.value == 1
+      @vote.value = -1
+      @vote.save
+    end
+    redirect_to post_url(params[:id])
+  end
   
   private
   def post_params
