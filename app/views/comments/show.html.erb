@@ -2,6 +2,7 @@
 <br>
 <p><%= @comment.content %></p>
 <pre>posted by <%= @comment.author.username %> at <%= @comment.created_at %></pre>
+<p><%= @comment.score %> upvotes</p>
 <br>
 <b>Reply to this comment:</b>
 <form action="<%= comments_url %>" method="POST">
