@@ -1,6 +1,7 @@
 <b>Original Comment:</b>
 <br>
-<pre><%= @comment.content %></pre>
+<p><%= @comment.content %></p>
+<pre>posted by <%= @comment.author.username %> at <%= @comment.created_at %></pre>
 <br>
 <b>Reply to this comment:</b>
 <form action="<%= comments_url %>" method="POST">
