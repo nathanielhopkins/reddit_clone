@@ -21,4 +21,12 @@ class Post < ApplicationRecord
     end
     sorted_comments
   end
+
+  def score
+    score = 0
+    self.votes.each do |vote|
+      score += vote.value if vote.value
+    end
+    score
+  end
 end
