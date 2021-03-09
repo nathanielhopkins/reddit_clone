@@ -20,7 +20,7 @@
 <a data-turbolinks="false" href="<%= new_post_comment_url(@post) %>">Comment on this post!</a>
 <ul class="post-comments-list">
   <% if @comments_by_parent_id[nil] %>
-    <% @comments_by_parent_id[nil].each do |comment| %>
+    <% @comments_by_parent_id[nil].sort_by {|comment| comment.score }.reverse.each do |comment| %>
       <br>
       <li><%= render "shared/comment", comment: comment %></li>
     <% end %>

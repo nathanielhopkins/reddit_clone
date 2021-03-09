@@ -2,7 +2,7 @@
 <pre>posted by <%= comment.author.username %> at <%= comment.created_at %></pre>
   <ul>
     <% if @comments_by_parent_id[comment.id] %>
-      <% @comments_by_parent_id[comment.id].each do |child| %>
+      <% @comments_by_parent_id[comment.id].sort_by {|child| child.score }.reverse.each do |child| %>
         <br>  
         <li><%= render "shared/comment", comment: child %></li>
       <% end %>
