@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def upvote
-    @vote = Vote.find_or_create_by(votable_type: "Comment", votable_id: params[:id])
+    @vote = Vote.find_or_create_by(user_id: current_user.id, votable_type: "Comment", votable_id: params[:id])
     if @vote.value.nil? || @vote.value == -1
       @vote.value = 1
       @vote.save
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def downvote
-    @vote = Vote.find_or_create_by(votable_type: "Comment", votable_id: params[:id])
+    @vote = Vote.find_or_create_by(user_id: current_user.id, votable_type: "Comment", votable_id: params[:id])
     if @vote.value.nil? || @vote.value == 1
       @vote.value = -1
       @vote.save
