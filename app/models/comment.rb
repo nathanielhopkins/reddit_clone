@@ -16,4 +16,12 @@ class Comment < ApplicationRecord
   )
   belongs_to :parent_comment, optional: true
   has_many :votes, as: :votable
+
+  def score
+    score = 0
+    self.votes.each do |vote|
+      score += vote.value if vote.value
+    end
+    score
+  end
 end
