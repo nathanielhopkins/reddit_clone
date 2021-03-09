@@ -1,9 +1,13 @@
-<h1 class="page-header"><a data-turbolinks="false" href="<%= post_url(@post) %>"><%= @post.title %></a> by <%= @post.author.username %></h1>
+<h1 class="page-header">(<%= @post.score %>) <a data-turbolinks="false" href="<%= post_url(@post) %>"><%= @post.title %></a> by <%= @post.author.username %></h1>
 
 <% if @post.content %>
   <b>Content:</b>
   <pre><%= @post.content %></pre>
 <% end %>
+<br>
+<br>
+<%= render "shared/upvote", post: @post, type: "post" %>
+<%= render "shared/downvote", post: @post, type: "post" %>
 
 <b>Subs</b>
 <ul class="posts-subs-list">
