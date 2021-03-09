@@ -1,4 +1,4 @@
-<a data-turbolinks="false" href="<%= comment_url(comment)%>"><%= comment.content %></a>
+<p>(<%= comment.score %>) <a data-turbolinks="false" href="<%= comment_url(comment)%>"><%= comment.content %></a></p>
 <pre>posted by <%= comment.author.username %> at <%= comment.created_at %></pre>
   <ul>
     <% if @comments_by_parent_id[comment.id] %>
