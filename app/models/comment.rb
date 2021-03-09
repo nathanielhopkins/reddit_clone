@@ -14,6 +14,6 @@ class Comment < ApplicationRecord
     foreign_key: :parent_comment_id,
     primary_key: :id
   )
-
   belongs_to :parent_comment, optional: true
+  has_many :votes, as: :votable
 end

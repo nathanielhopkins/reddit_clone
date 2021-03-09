@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   has_many :post_subs, dependent: :destroy, inverse_of: :post
   has_many :subs, through: :post_subs
   has_many :comments
+  has_many :votes, as: :votable
 
   def comments_by_parent_id
     sorted_comments = {}
