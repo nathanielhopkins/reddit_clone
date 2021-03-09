@@ -1,0 +1,6 @@
+<% action_url = comment ? upvote_comment_url(comment) : upvote_post_url(post) %>
+
+<form action="<%= action_url %>" method="GET">
+  <%= auth_token %>
+  <input type="submit" value="Upvote">
+</form>
