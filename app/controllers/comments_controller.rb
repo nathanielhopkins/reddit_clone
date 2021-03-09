@@ -22,6 +22,24 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    @vote = Vote.find_or_create_by(votable_type: "Comment", votable_id: params[:id])
+    if @vote.value.nil? || @vote.value == -1
+      @vote.value = 1
+      @vote.save
+    end
+    redirect_to comment_url(params[:id])
+  end
+
+  def downvote
+    @vote = Vote.find_or_create_by(votable_type: "Comment", votable_id: params[:id])
+    if @vote.value.nil? || @vote.value == 1
+      @vote.value = -1
+      @vote.save
+    end
+    redirect_to comment_url(params[:id])
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:content, :post_id, :parent_comment_id)
