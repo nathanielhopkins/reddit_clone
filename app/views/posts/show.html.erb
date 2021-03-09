@@ -15,8 +15,8 @@
 <h3>Comments</h3>
 <a data-turbolinks="false" href="<%= new_post_comment_url(@post) %>">Comment on this post!</a>
 <ul class="post-comments-list">
-  <% @all_comments.each do |comment| %>
-    <% if comment.parent_comment_id == nil %>
+  <% if @comments_by_parent_id[nil] %>
+    <% @comments_by_parent_id[nil].each do |comment| %>
       <br>
       <li><%= render "shared/comment", comment: comment %></li>
     <% end %>
